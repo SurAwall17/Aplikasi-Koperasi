@@ -17,11 +17,13 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    // protected $fillable = [
+    //     'name',
+    //     'email',
+    //     'password',
+    // ];
+
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -33,6 +35,14 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return str_ends_with($this->email, '@admin.com') && $this->hasVerifiedEmail();
+    }
+
+    public function pengajuan(){
+        return $this->hasMany(Pengajuan::class);
+    }
     /**
      * The attributes that should be cast.
      *
