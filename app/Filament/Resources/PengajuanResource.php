@@ -93,7 +93,9 @@ class PengajuanResource extends Resource
                         TextInput::make('rencana_kegiatan')
                             ->required(),
                         FileUpload::make('data_npak')
-                            ->required()->downloadable(),
+                            ->required()->downloadable()
+                            ->disk('public')
+                            ->directory('npak'),
                         
                     ])->columns(2),
             ]);

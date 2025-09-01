@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\PengajuanController;
+use App\Http\Controllers\NotifikasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +17,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// authentication
+Route::get('/register', [RegisterController::class, 'formRegister']);
+Route::post('/register', [RegisterController::class, 'register']);
+
+Route::get('/login', [LoginController::class, 'formLogin']);
+Route::post('/login', [LoginController::class, 'login']);
+
+Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::middleware(['auth'])->group(function () {
+    // dashboard
+    Route::get('/', [DashboardController::class, 'viewDashboard']);
+    Route::get('/contact', [DashboardController::class, 'viewContact']);
+    Route::get('/about', [DashboardController::class, 'viewAbout']);
+
+    // pengajuan
+    Route::get('/pengajuan', [PengajuanController::class, 'viewPengajuan']);
+    Route::post('/pengajuan', [PengajuanController::class, 'store']);
+
+    // pengesahan
+    Route::get('/notifikasi', [NotifikasiController::class, 'getNotification']);
 });
+
