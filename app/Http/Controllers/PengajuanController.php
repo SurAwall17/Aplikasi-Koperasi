@@ -123,4 +123,11 @@ class PengajuanController extends Controller
         return redirect('pengajuan')->with('success', 'Data pengajuan berhasil di ubah!');
 
     }
+
+    public function deletePengajuan($id){
+        $data = Pengajuan::find($id);
+        $data->delete();
+
+        return redirect('/pengajuan')->with('success', 'Data berhasil dihapus!');
+    }
 }

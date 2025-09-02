@@ -120,8 +120,22 @@
                 confirmButtonText: 'Ya, hapus!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    // Submit form dengan id tertentu
                     document.getElementById('form-' + id).submit();
+                }
+            });
+        }
+
+        function confirmLogout() {
+            Swal.fire({
+                title: 'Apakah Anda yakin ingin logout?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Logout!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('form-logout').submit();
                 }
             });
         }

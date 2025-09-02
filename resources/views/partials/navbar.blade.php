@@ -67,10 +67,10 @@
                             <a href="#!" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="bi bi-person-circle"></i> {{ Auth()->user()->name }}</a>
                             <div class="dropdown-menu bg-light mt-2">
                                 <a href="/testimonial" class="dropdown-item"><i class="bi bi-gear"></i> Settings</a>
-                                <form action="/logout" method="post">
+                                <form action="/logout" id="form-logout" method="post">
                                 @csrf
                                     {{-- <a href="/logout" class="dropdown-item text-danger"><i class="bi bi-box-arrow-in-right"></i> Logout</a> --}}
-                                    <button class="dropdown-item text-danger"><i class="bi bi-box-arrow-in-right"></i> Logout</button>
+                                    <button type="button" onclick="confirmLogout()" class="dropdown-item text-danger"><i class="bi bi-box-arrow-in-right"></i> Logout</button>
                                 </form>
                             </div>
                         </div>
