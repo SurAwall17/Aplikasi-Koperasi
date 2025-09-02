@@ -34,7 +34,9 @@ Route::middleware(['auth'])->group(function () {
 
     // pengajuan
     Route::get('/pengajuan', [PengajuanController::class, 'viewPengajuan']);
-    Route::post('/pengajuan', [PengajuanController::class, 'store']);
+    Route::post('/pengajuan', [PengajuanController::class, 'store']);;
+    Route::put('/pengajuan/update/{id}', [PengajuanController::class, 'updatePengajuan']);
+    Route::delete('/pengajuan/delete/{id}', [PengajuanController::class, 'deletePengajuan']);
 
     // pengesahan
     Route::get('/notifikasi', [NotifikasiController::class, 'getNotification']);

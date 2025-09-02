@@ -32,13 +32,6 @@
           </div>
       @endif
 
-      @if (session('logout'))
-          <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              <strong>Logout Berhasil!</strong>
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-      @endif
-
       <!-- Email -->
       <div class="mb-3 input-group">
         <span class="input-group-text bg-white"><i class="bi bi-envelope"></i></span>
